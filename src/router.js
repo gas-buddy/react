@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 
 function populatePathArray(pathArray, prefix, routeSpec) {
@@ -9,7 +10,7 @@ function populatePathArray(pathArray, prefix, routeSpec) {
       pathArray.push({
         ...r,
         path: r.path ? `${prefix}/${r.path}` : (prefix || '/'),
-      })
+      });
     }
   } else if (typeof routes === 'object') {
     routesToRecurse = routeSpec;
@@ -48,17 +49,23 @@ export const Router = ({ routes }) => {
   // in here until react-router-config cleans up it's act
   return (
     <Switch>
-      {paths.map((route, i) => (
+      {paths.map(route => (
         <Route
           exact={route.exact}
-          key={i}
+          key={route.path}
           path={route.path}
           strict={route.strict}
-          render={(props) => (
+          render={props => (
             <route.component {...props} route={route} />
           )}
         />
       ))}
     </Switch>
   );
+};
+
+Router.propTypes = {
+  // ¯\_(ツ)_/¯ it's a recursive object with arbitrary keys.
+  // eslint-disable-next-line react/forbid-prop-types
+  routes: PropTypes.object.isRequired,
 };

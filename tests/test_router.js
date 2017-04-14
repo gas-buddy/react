@@ -1,6 +1,5 @@
 import tap from 'tap';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import 'react';
 import { Router } from '../src/router';
 
 const component1 = () => { };

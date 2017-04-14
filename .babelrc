@@ -1,6 +1,11 @@
 {
   "env": {
-    "node": {
+    "test": {
+      "presets": [
+        "gasbuddy"
+      ]
+    },
+    "development": {
       "presets": [
         "gasbuddy"
       ]

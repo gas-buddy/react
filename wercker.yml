@@ -11,6 +11,10 @@ build:
       code: yarn lint
 
     - script:
+      name: test
+      code: yarn test
+      
+    - script:
       name: build
       code: yarn build
 

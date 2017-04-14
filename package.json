@@ -5,9 +5,13 @@
   "main": "build/index.js",
   "module": "build-webpack/index.js",
   "scripts": {
+    "test": "tap --node-arg=-r --node-arg=babel-register tests/test_*.js",
+    "ci-test": "cross-env NODE_ENV=test nyc tap -Rtap tests/test_*.js | tee .tap_output | tap -Rspec -",
+    "ci-cover": "nyc check-coverage",
+    "ci-coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
     "prepublish": "npm run build && npm run webpack",
-    "build": "cross-env BABEL_ENV=node babel src/ --out-dir build/",
+    "build": "cross-env babel src/ --out-dir build/",
     "webpack": "cross-env BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
   },
   "repository": {
@@ -26,13 +30,21 @@
   "homepage": "https://github.com/gas-buddy/web#readme",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "react": "^15.5.4"
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-promise-middleware": "^4.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
     "babel-preset-gasbuddy": "^2.3.5",
     "cross-env": "^4",
     "eslint": "^3.1.0",
-    "eslint-config-gasbuddy": "^2"
+    "eslint-config-gasbuddy": "^2",
+    "redux-logger": "^3.0.1",
+    "tap": "^10.3.2"
   }
 }

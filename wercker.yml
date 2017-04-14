@@ -1,0 +1,24 @@
+box: gasbuddy/node-app:wercker
+
+build:
+  steps:
+    - script:
+      name: install packages
+      code: yarn
+
+    - script:
+      name: lint
+      code: yarn lint
+
+    - script:
+      name: build
+      code: yarn build
+
+deploy:
+  steps:
+    - script:
+      name: npm publish
+      code: |
+        npm config set unsafe-perm true
+        echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        npm publish . --tag latest

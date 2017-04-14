@@ -1,3 +1,19 @@
 {
-  "presets": ["gasbuddy"]
+  "env": {
+    "node": {
+      "presets": [
+        "gasbuddy"
+      ]
+    },
+    "webpack": {
+      "presets": [
+        [
+          "gasbuddy",
+          {
+            "webpack": true
+          }
+        ]
+      ]
+    }
+  }
 }

@@ -3,16 +3,12 @@
   "version": "1.0.0-alpha",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
-  "module": "src/index.js",
+  "module": "build-webpack/index.js",
   "scripts": {
-    "test": "tap --node-arg=-r --node-arg=babel-register tests/test_*.js",
-    "cover": "cross-env BABEL_ENV=test nyc tap tests/test_*.js && nyc check-coverage",
-    "ci-test": "cross-env NODE_ENV=test nyc tap -Rtap tests/test_*.js | tee .tap_output | tap -Rspec -",
-    "ci-cover": "nyc check-coverage",
-    "ci-coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
-    "prepublish": "npm run build",
-    "build": "babel src/ --out-dir build/"
+    "prepublish": "npm run build && npm run webpack",
+    "build": "cross-env BABEL_ENV=node babel src/ --out-dir build/",
+    "webpack": "cross-env BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
   },
   "repository": {
     "type": "git",
@@ -37,25 +33,6 @@
     "babel-preset-gasbuddy": "^2.3.5",
     "cross-env": "^4",
     "eslint": "^3.1.0",
-    "eslint-config-gasbuddy": "^2",
-    "tap": "^10.2.1"
-  },
-  "nyc": {
-    "lines": 75,
-    "statements": 75,
-    "functions": 75,
-    "branches": 45,
-    "include": [
-      "src"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false,
-    "instrument": false,
-    "reporter": [
-      "text",
-      "lcov"
-    ]
+    "eslint-config-gasbuddy": "^2"
   }
 }

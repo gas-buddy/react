@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { createStore as reduxCreateStore, applyMiddleware } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';

@@ -2,6 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 
+function prefixedPath(prefix, path) {
+  // Two slashes means an absolute path
+  if (path && path.substring(0, 2) === '//') {
+    return path.substring(1);
+  }
+  if (path) {
+    return `${prefix}/${path}`;
+  }
+  return prefix || '/';
+}
+
 function populatePathArray(pathArray, prefix, routeSpec) {
   const { routes, ...rest } = routeSpec || {};
   let routesToRecurse = rest;
@@ -9,7 +20,7 @@ function populatePathArray(pathArray, prefix, routeSpec) {
     for (const r of routes) {
       pathArray.push({
         ...r,
-        path: r.path ? `${prefix}/${r.path}` : (prefix || '/'),
+        path: prefixedPath(prefix, r.path),
       });
     }
   } else if (typeof routes === 'object') {

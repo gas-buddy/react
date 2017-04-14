@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 
 function prefixedPath(prefix, path) {
@@ -8,7 +7,7 @@ function prefixedPath(prefix, path) {
     return path.substring(1);
   }
   if (path) {
-    return `${prefix}/${path}`;
+    return `${prefix}${path}`;
   }
   return prefix || '/';
 }
@@ -20,6 +19,7 @@ function populatePathArray(pathArray, prefix, routeSpec) {
     for (const r of routes) {
       pathArray.push({
         ...r,
+        key: pathArray.length,
         path: prefixedPath(prefix, r.path),
       });
     }
@@ -53,17 +53,17 @@ function populatePathArray(pathArray, prefix, routeSpec) {
  * Note that if the "routes" key is an object and not an array, we assume
  * you meant you wanted a "routes" part of the path
  */
-export const Router = ({ routes }) => {
+export const RouterThunk = (routes) => {
   const paths = [];
   populatePathArray(paths, '', routes);
 
   // in here until react-router-config cleans up it's act
-  return (
+  return () => (
     <Switch>
       {paths.map(route => (
         <Route
           exact={route.exact}
-          key={route.path}
+          key={route.key}
           path={route.path}
           strict={route.strict}
           render={props => (
@@ -73,10 +73,4 @@ export const Router = ({ routes }) => {
       ))}
     </Switch>
   );
-};
-
-Router.propTypes = {
-  // ¯\_(ツ)_/¯ it's a recursive object with arbitrary keys.
-  // eslint-disable-next-line react/forbid-prop-types
-  routes: PropTypes.object.isRequired,
 };

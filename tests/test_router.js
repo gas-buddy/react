@@ -1,6 +1,6 @@
 import tap from 'tap';
 import 'react';
-import { Router } from '../src/router';
+import { RouterThunk } from '../src/router';
 
 const component1 = () => { };
 const component2 = () => { };
@@ -9,7 +9,7 @@ const component3 = () => { };
 const routes = {
   routes: [
     { component: component1, exact: true },
-    { component: component2, exact: true, path: 'hello' },
+    { component: component2, exact: true, path: '/hello' },
   ],
   hello: {
     world: {
@@ -19,7 +19,7 @@ const routes = {
 };
 
 tap.test('test_router', (t) => {
-  const router = Router({ routes });
+  const router = RouterThunk(routes)();
   const children = router.props.children;
   t.strictEquals(children.length, 3, 'should have 3 routes');
   t.strictEquals(children[0].props.path, '/', 'should have /');

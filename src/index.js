@@ -1,3 +1,3 @@
 export * from './apiMiddleware';
-export * from './clientStore';
+export * from './store';
 export * from './router';

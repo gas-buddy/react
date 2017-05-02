@@ -36,11 +36,19 @@ export class WithData extends React.Component {
   fetch = () => {
     const { url, method, body } = this.props;
     const baseState = { url, method, body };
+    const headers = {
+      'Request-Source': 'ajax',
+    };
+
+    if (body) {
+      headers['Content-Type'] = 'application/json';
+    }
 
     fetch(url, {
       credentials: 'include',
       method,
       body: body ? JSON.stringify(body) : undefined,
+      headers,
     }).then(async (response) => {
       const data = await response.json();
       this.setState({

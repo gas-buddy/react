@@ -28,7 +28,9 @@ export class WithData extends React.Component {
   }
 
   componentDidUpdate({ body, url }) {
-    if (this.props.autoLoad && (body !== this.props.body || url !== this.props.url)) {
+    const newBody = body ? JSON.stringify(body) : null;
+    const exBody = this.props.body ? JSON.stringify(this.props.body) : null;
+    if (this.props.autoLoad && (newBody !== exBody || url !== this.props.url)) {
       this.fetch();
     }
   }

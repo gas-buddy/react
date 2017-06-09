@@ -77,7 +77,7 @@ export class WithData extends React.Component {
     const { children } = this.props;
     return children && React.cloneElement(children, {
       ...this.state,
-      fetch,
+      fetch: this.fetch,
     });
   }
 }

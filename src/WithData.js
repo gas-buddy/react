@@ -36,8 +36,22 @@ export class WithData extends React.Component {
   }
 
   fetch = () => {
-    const { url, method, body } = this.props;
+    const { url, method, body, valuesForState, onData } = this.props;
     const baseState = { url, method, body };
+
+    // If you want to cache results, use onData and valuesForState to
+    // store it in redux or similar.
+    if (valuesForState) {
+      const rz = valuesForState(baseState);
+      if (rz && rz.data) {
+        this.setState({
+          ...baseState,
+          data: rz.data,
+          status: rz.status || 200,
+        });
+        return;
+      }
+    }
     const headers = {
       'Request-Source': 'ajax',
     };
@@ -58,6 +72,10 @@ export class WithData extends React.Component {
         data,
         status: response.status,
         loading: false,
+      }, () => {
+        if (onData) {
+          onData(baseState, data);
+        }
       });
     }).catch((error) => {
       this.setState({
@@ -89,6 +107,8 @@ WithData.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   body: PT.object,
   autoLoad: PT.bool,
+  onData: PT.func,
+  valuesForState: PT.func,
 };
 
 WithData.defaultProps = {
@@ -97,4 +117,6 @@ WithData.defaultProps = {
   method: 'POST',
   body: null,
   autoLoad: true,
+  onData: null,
+  valuesForState: null,
 };

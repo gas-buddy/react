@@ -18,6 +18,10 @@ build:
       name: build
       code: npm run build
 
+    - script:
+      name: build-webpack
+      code: npm run webpack
+
 deploy:
   steps:
     - script:

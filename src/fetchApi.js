@@ -15,8 +15,8 @@ export async function fetchApi(request) {
     .then(async (response) => {
       const { headers, status } = response;
       let responseBody;
-      const contentType = response.headers.get("content-type").toLowerCase();
-      if (contentType && contentType.includes("application/json")) {
+      const contentType = response.headers.get('content-type').toLowerCase();
+      if (contentType && contentType.includes('application/json')) {
         responseBody = await response.json();
       }
       return { request, status, headers, body: responseBody };

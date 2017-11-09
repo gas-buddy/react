@@ -18,7 +18,10 @@ export async function fetchApi(request) {
       const contentType = response.headers.get('content-type').toLowerCase();
       if (contentType && contentType.includes('application/json')) {
         responseBody = await response.json();
+      } else {
+        responseBody = await response.blob();
       }
+
       return { request, status, headers, body: responseBody };
     });
   if (catchErrors) {

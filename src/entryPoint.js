@@ -18,7 +18,7 @@ export function entryPoint({
   const store = createStore({ reducers, initialState, apiMiddleware });
 
   const render = (Component) => {
-    ReactDOM.render((
+    ReactDOM.hydrate((
       <AppContainer>
         <BrowserRouter forceRefresh={!supportsHistory}>
           <Provider store={store}>

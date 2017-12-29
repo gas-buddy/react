@@ -32,7 +32,7 @@ export function entryPoint({
   render(Router);
 
 
-  if (module.hot) {
+  if (module.hot && routerPath) {
     module.hot.accept(routerPath, () => {
       render(Router);
     });

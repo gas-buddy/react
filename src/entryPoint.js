@@ -8,7 +8,6 @@ import { createStore, Provider } from './store';
 export function entryPoint({
   reducers,
   router: Router,
-  routerPath,
   initialState,
   apiMiddleware,
   rootSelector = '#container',
@@ -30,11 +29,4 @@ export function entryPoint({
   };
 
   render(Router);
-
-
-  if (module.hot) {
-    module.hot.accept(routerPath, () => {
-      render(Router);
-    });
-  }
 }

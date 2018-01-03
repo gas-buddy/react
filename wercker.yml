@@ -1,4 +1,4 @@
-box: gasbuddy/node-app:wercker-npm5
+box: gasbuddy/node-app:wercker-node8
 
 build:
   steps:

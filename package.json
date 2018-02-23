@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
@@ -11,8 +11,8 @@
     "ci-coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
     "prepublish": "npm run build && npm run webpack",
-    "build": "cross-env babel src/ --out-dir build/",
-    "webpack": "cross-env BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
+    "build": "babel src/ --out-dir build/",
+    "webpack": "cross-env NODE_ENV=production BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
   },
   "repository": {
     "type": "git",

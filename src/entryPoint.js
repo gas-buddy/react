@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { AppContainer } from 'react-hot-loader';
 import { createStore, Provider } from './store';
 
 export function entryPoint({
@@ -18,13 +17,11 @@ export function entryPoint({
 
   const render = (Component) => {
     ReactDOM.render((
-      <AppContainer>
-        <BrowserRouter forceRefresh={!supportsHistory}>
-          <Provider store={store}>
-            <Component />
-          </Provider>
-        </BrowserRouter>
-      </AppContainer>
+      <BrowserRouter forceRefresh={!supportsHistory}>
+        <Provider store={store}>
+          <Component />
+        </Provider>
+      </BrowserRouter>
     ), rootNode);
   };
 

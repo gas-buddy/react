@@ -1,3 +1,4 @@
+/* globals window */
 import fetch from 'isomorphic-fetch';
 
 export async function fetchApi(request) {
@@ -9,6 +10,7 @@ export async function fetchApi(request) {
     headers: {
       'Content-Type': 'application/json',
       'Request-Source': 'ajax',
+      gbcsrf: typeof window !== 'undefined' ? window.gbcsrf : undefined,
     },
     body: body ? JSON.stringify(body) : undefined,
   })

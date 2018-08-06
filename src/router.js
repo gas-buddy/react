@@ -1,5 +1,4 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
 function prefixedPath(prefix, path) {
   // Two slashes means an absolute path
@@ -55,22 +54,10 @@ function populatePathArray(pathArray, prefix, routeSpec) {
  */
 export const RouterThunk = (routes) => {
   const paths = [];
+
+  // Convert objects to arrays with prefixes
   populatePathArray(paths, '', routes);
 
-  // in here until react-router-config cleans up it's act
-  return () => (
-    <Switch>
-      {paths.map(route => (
-        <Route
-          exact={route.exact}
-          key={route.key}
-          path={route.path}
-          strict={route.strict}
-          render={props => (
-            <route.component {...props} route={route} />
-          )}
-        />
-      ))}
-    </Switch>
-  );
+  // Return a Switch with Routes
+  return renderRoutes(paths);
 };

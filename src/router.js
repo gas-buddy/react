@@ -59,5 +59,5 @@ export const RouterThunk = (routes) => {
   populatePathArray(paths, '', routes);
 
   // Return a Switch with Routes
-  return ({ extraProps, switchProps }) => renderRoutes(paths, extraProps, switchProps);
+  return ({ extraProps, switchProps } = {}) => renderRoutes(paths, extraProps, switchProps);
 };

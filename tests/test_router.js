@@ -20,7 +20,7 @@ const routes = {
 
 tap.test('test_router', (t) => {
   const router = RouterThunk(routes)();
-  const children = router.props.children;
+  const { children } = router.props;
   t.strictEquals(children.length, 3, 'should have 3 routes');
   t.strictEquals(children[0].props.path, '/', 'should have /');
   t.strictEquals(children[1].props.path, '/hello', 'should have /hello');

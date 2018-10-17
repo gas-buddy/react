@@ -2,7 +2,9 @@
 import fetch from 'isomorphic-fetch';
 
 export async function fetchApi(request) {
-  const { method = 'POST', url, body, catchErrors = false } = request;
+  const {
+    method = 'POST', url, body, catchErrors = false,
+  } = request;
 
   const promise = fetch(url, {
     credentials: 'include',
@@ -24,7 +26,9 @@ export async function fetchApi(request) {
         responseBody = await response.blob();
       }
 
-      return { request, status, headers, body: responseBody };
+      return {
+        request, status, headers, body: responseBody,
+      };
     });
   if (catchErrors) {
     return promise.catch(error => ({

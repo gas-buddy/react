@@ -22,7 +22,7 @@ export function minimalEntryPoint({
       // Nothing to do here...
     }
   }
-  const store = storeCreator({ reducers, initialState });
+  const store = storeCreator(reducers, initialState);
 
   const render = (Component) => {
     ReactDOM.render((

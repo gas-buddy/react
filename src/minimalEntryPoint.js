@@ -17,7 +17,7 @@ export function minimalEntryPoint({
   if (process.env.NODE_ENV !== 'production') {
     try {
       // eslint-disable-next-line global-require, import/no-extraneous-dependencies
-      storeCreator = applyMiddleware([require('redux-logger').logger])(storeCreator);
+      storeCreator = applyMiddleware(require('redux-logger').logger)(storeCreator);
     } catch (error) {
       // Nothing to do here...
     }

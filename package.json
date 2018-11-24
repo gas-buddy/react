@@ -1,9 +1,10 @@
 {
   "name": "@gasbuddy/react",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
+  "sideEffects": false,
   "scripts": {
     "test": "tap --node-arg=-r --node-arg=@babel/register tests/test_*.js",
     "ci-test": "cross-env NODE_ENV=test nyc tap -Rtap tests/test_*.js | tee .tap_output | tap -Rspec -",

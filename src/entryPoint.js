@@ -2,18 +2,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, Provider } from './store';
+import { createStore } from './store';
 
 export function entryPoint({
   reducers,
   router: Router,
   initialState,
-  apiMiddleware,
+  middleware,
   rootSelector = '#container',
 }) {
   const rootNode = document.querySelector(rootSelector);
   const supportsHistory = 'pushState' in window.history;
-  const store = createStore({ reducers, initialState, apiMiddleware });
+  const store = createStore({ reducers, initialState, middleware });
 
   const render = (Component) => {
     ReactDOM.render((

@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from './store';
+import { createStore, Provider } from './store';
 
 export function entryPoint({
   reducers,

@@ -8,12 +8,12 @@ export function entryPoint({
   reducers,
   router: Router,
   initialState,
-  middleware,
+  apiMiddleware,
   rootSelector = '#container',
 }) {
   const rootNode = document.querySelector(rootSelector);
   const supportsHistory = 'pushState' in window.history;
-  const store = createStore({ reducers, initialState, middleware });
+  const store = createStore({ reducers, initialState, apiMiddleware });
 
   const render = (Component) => {
     ReactDOM.render((

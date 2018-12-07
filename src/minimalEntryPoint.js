@@ -24,7 +24,7 @@ export function minimalEntryPoint({
     }
   }
 
-  const storeCreator = applyMiddleware(middleware)(createStore);
+  const storeCreator = applyMiddleware(...middleware)(createStore);
   const store = storeCreator(reducers, initialState);
 
   const render = (Component) => {

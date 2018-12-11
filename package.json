@@ -1,11 +1,12 @@
 {
   "name": "@gasbuddy/react",
-  "version": "5.1.0",
+  "version": "6.1.4",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
+  "sideEffects": false,
   "scripts": {
-    "test": "tap --node-arg=-r --node-arg=babel-register tests/test_*.js",
+    "test": "tap --node-arg=-r --node-arg=@babel/register tests/test_*.js",
     "ci-test": "cross-env NODE_ENV=test nyc tap -Rtap tests/test_*.js | tee .tap_output | tap -Rspec -",
     "ci-cover": "nyc check-coverage",
     "ci-coveralls": "nyc report --reporter=text-lcov | coveralls",
@@ -29,22 +30,26 @@
   },
   "homepage": "https://github.com/gas-buddy/web#readme",
   "dependencies": {
+    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
+    "@babel/plugin-transform-react-inline-elements": "^7.0.0",
+    "babel-plugin-transform-react-class-to-function": "^1.2.0",
     "isomorphic-fetch": "^2.2.1",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
     "react-router-config": "^1.0.0-beta.4",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-promise-middleware": "^4.4.2"
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-promise-middleware": "^5.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-gasbuddy": "^3.1.0",
-    "cross-env": "^5.1.3",
-    "eslint-config-gasbuddy": "^4.0.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/register": "^7.0.0",
+    "babel-preset-gasbuddy": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "eslint-config-gasbuddy": "^5.0.3",
     "redux-logger": "^3.0.6",
-    "tap": "^10.7.3"
+    "tap": "^12.1.0"
   }
 }

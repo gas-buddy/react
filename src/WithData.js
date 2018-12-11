@@ -14,23 +14,26 @@ export class WithData extends React.Component {
 
   componentDidMount() {
     const { url, autoLoad } = this.props;
-    if (url && autoLoad && !('data' in this.state) && !this.state.loading) {
+    const { loading } = this.state;
+    if (url && autoLoad && !('data' in this.state) && !loading) {
       this.fetch();
     }
   }
 
   shouldComponentUpdate({ body, url }, nextState) {
+    const { url: pUrl, body: pBody } = this.props;
     return (
-      url !== this.props.url ||
-      body !== this.props.body ||
-      nextState !== this.state
+      url !== pUrl
+      || body !== pBody
+      || nextState !== this.state
     );
   }
 
   componentDidUpdate({ body, url }) {
     const newBody = body ? JSON.stringify(body) : null;
-    const exBody = this.props.body ? JSON.stringify(this.props.body) : null;
-    if (this.props.autoLoad && (newBody !== exBody || url !== this.props.url)) {
+    const { body: pBody, url: pUrl, autoLoad } = this.props;
+    const exBody = pBody ? JSON.stringify(pBody) : null;
+    if (autoLoad && (newBody !== exBody || url !== pUrl)) {
       this.fetch();
     }
   }

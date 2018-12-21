@@ -9,19 +9,22 @@ export function minimalEntryPoint({
   reducers,
   router: Router,
   initialState,
+  middleware = [],
   rootSelector = '#container',
 }) {
   const rootNode = document.querySelector(rootSelector);
   const supportsHistory = 'pushState' in window.history;
-  let storeCreator = createStore;
+
   if (process.env.NODE_ENV !== 'production') {
     try {
       // eslint-disable-next-line global-require, import/no-extraneous-dependencies
-      storeCreator = applyMiddleware(require('redux-logger').logger)(storeCreator);
+      middleware.unshift(require('redux-logger').logger);
     } catch (error) {
       // Nothing to do here...
     }
   }
+
+  const storeCreator = middleware.length ? applyMiddleware(...middleware)(createStore) : createStore;
   const store = storeCreator(reducers, initialState);
 
   const render = (Component) => {

@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "6.1.4",
+  "version": "6.2.0",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
@@ -30,25 +30,25 @@
   },
   "homepage": "https://github.com/gas-buddy/web#readme",
   "dependencies": {
-    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
-    "@babel/plugin-transform-react-inline-elements": "^7.0.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.2.0",
+    "@babel/plugin-transform-react-inline-elements": "^7.2.0",
     "babel-plugin-transform-react-class-to-function": "^1.2.0",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-promise-middleware": "^5.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
+    "@babel/cli": "^7.2.3",
     "@babel/register": "^7.0.0",
-    "babel-preset-gasbuddy": "^4.2.0",
+    "babel-preset-gasbuddy": "^5.3.0",
     "cross-env": "^5.2.0",
-    "eslint-config-gasbuddy": "^5.0.3",
+    "eslint-config-gasbuddy": "^5.1.0",
     "redux-logger": "^3.0.6",
-    "tap": "^12.1.0"
+    "tap": "^12.5.1"
   }
 }

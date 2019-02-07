@@ -28,7 +28,7 @@ export function minimalEntryPoint({
   const store = storeCreator(reducers, initialState);
 
   const render = (Component) => {
-    ReactDOM.render((
+    ReactDOM.hydrate((
       <BrowserRouter forceRefresh={!supportsHistory}>
         <Provider store={store}>
           <Component />

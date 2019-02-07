@@ -5,6 +5,7 @@ export * from './store';
 export * from './router';
 export * from './entryPoint';
 export * from './minimalEntryPoint';
+export * from './routerOnlyEntryPoint';
 export * from './WithData';
 export * from './fetchApi';
 

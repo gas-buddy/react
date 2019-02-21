@@ -13,7 +13,7 @@ build:
     - script:
       name: test
       code: npm test
-      
+
     - script:
       name: build
       code: npm run build
@@ -21,6 +21,10 @@ build:
     - script:
       name: build-webpack
       code: npm run webpack
+
+    - script:
+      name: bundlesize
+      code: npm run bundlesize
 
 deploy:
   steps:

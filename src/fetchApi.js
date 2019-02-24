@@ -3,10 +3,11 @@ import fetch from 'isomorphic-fetch';
 
 export async function fetchApi(request) {
   const {
-    method = 'POST', url, body, catchErrors = false,
+    method = 'POST', url, body, catchErrors = false, ...rest
   } = request;
 
   const promise = fetch(url, {
+    ...rest,
     credentials: 'include',
     method,
     headers: {

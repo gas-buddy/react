@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 
 export async function fetchApi(request) {
   const {
-    method = 'POST', url, body, catchErrors = false, ...rest
+    method = 'POST', url, body, catchErrors = false, httpResponseErrors = false, ...rest
   } = request;
 
   const promise = fetch(url, {
@@ -25,6 +25,16 @@ export async function fetchApi(request) {
         responseBody = await response.json();
       } else {
         responseBody = await response.blob();
+      }
+
+      if (httpResponseErrors && (status < 200 || status > 299)) {
+        return {
+          error: new Error(responseBody?.message || status),
+          body: responseBody,
+          status,
+          headers,
+          request,
+        };
       }
 
       return {

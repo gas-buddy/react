@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { loadableReady } from '@loadable/component';
 
 export function routerOnlyEntryPoint({
   router: Router,
@@ -18,5 +19,5 @@ export function routerOnlyEntryPoint({
     ), rootNode);
   };
 
-  render(Router);
+  loadableReady(() => render(Router));
 }

@@ -2,7 +2,20 @@ export * from './router';
 export * from './entryPoint';
 export * from './fetchApi';
 
-export { default as React, cloneElement } from 'react';
+export {
+  default as React,
+  useState,
+  useEffect,
+  useContext,
+  useRef,
+  useReducer,
+  useMemo,
+  useLayoutEffect,
+  useImperativeHandle,
+  useDebugValue,
+  useCallback,
+  cloneElement,
+} from 'react';
 export { Link, NavLink, Redirect, withRouter, StaticRouter } from 'react-router-dom';
 export { default as ReactDOMServer, renderToString, renderToStaticMarkup } from 'react-dom/server';
 

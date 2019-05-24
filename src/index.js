@@ -21,5 +21,6 @@ export { default as ReactDOMServer, renderToString, renderToStaticMarkup } from 
 
 export { default as IsomorphicContainer } from './IsomorphicContainer';
 export { default as UnstatedProvider } from './UnstatedProvider';
+export { Subscribe } from 'unstated';
 
 export { hot } from 'react-hot-loader/root';

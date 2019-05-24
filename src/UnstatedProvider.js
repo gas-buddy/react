@@ -7,9 +7,14 @@ interface UnstatedProviderProps {
 }
 
 const UnstatedProvider = ({ initialState, children }: UnstatedProviderProps) => {
-  const injected = [];
-  injected.push(...Object.values(initialState));
-  return <Provider inject={injected}>{children}</Provider>;
+  let inject;
+  if (initialState) {
+    const values = Object.values(initialState);
+    if (values.length) {
+      inject = values;
+    }
+  }
+  return <Provider inject={inject}>{children}</Provider>;
 };
 
 export default UnstatedProvider;

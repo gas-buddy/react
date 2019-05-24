@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
@@ -44,7 +44,7 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/register": "^7.4.4",
-    "babel-preset-gasbuddy": "^5.4.0",
+    "babel-preset-gasbuddy": "^5.5.0",
     "cross-env": "^5.2.0",
     "eslint-config-gasbuddy": "^5.2.1",
     "redux-logger": "^3.0.6",

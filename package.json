@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
@@ -37,17 +37,17 @@
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.8.8",
-    "react-router-dom": "^5.0.0",
+    "react-hot-loader": "^4.9.0",
+    "react-router-dom": "^5.0.1",
     "unstated": "^2.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/register": "^7.4.4",
-    "babel-preset-gasbuddy": "^5.5.0",
+    "babel-preset-gasbuddy": "^5.6.0",
     "cross-env": "^5.2.0",
-    "eslint-config-gasbuddy": "^5.2.1",
+    "eslint-config-gasbuddy": "^5.3.0",
     "redux-logger": "^3.0.6",
-    "tap": "^14.1.10"
+    "tap": "^14.2.2"
   }
 }

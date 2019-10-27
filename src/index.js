@@ -23,4 +23,4 @@ export { default as IsomorphicContainer } from './IsomorphicContainer';
 export { default as UnstatedProvider } from './UnstatedProvider';
 export { Subscribe } from 'unstated';
 
-export { hot } from 'react-hot-loader';
+export { hot } from 'react-hot-loader/root';

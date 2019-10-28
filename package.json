@@ -11,13 +11,13 @@
     "ci-cover": "nyc check-coverage",
     "ci-coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
-    "prepublish": "npm run build && npm run webpack",
+    "prepublish": "npm run build && npm run build:webpack",
     "build": "babel --source-maps inline src/ --out-dir build/",
-    "webpack": "cross-env NODE_ENV=production BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
+    "build:webpack": "cross-env BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gas-buddy/web.git"
+    "url": "git+https://github.com/gas-buddy/react.git"
   },
   "keywords": [
     "web",

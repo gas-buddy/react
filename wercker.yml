@@ -13,14 +13,14 @@ build:
     - script:
       name: test
       code: npm test
-      
+
     - script:
       name: build
       code: npm run build
 
     - script:
       name: build-webpack
-      code: npm run webpack
+      code: npm run build:webpack
 
 deploy:
   steps:

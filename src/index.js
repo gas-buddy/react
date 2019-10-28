@@ -16,7 +16,8 @@ export {
   useCallback,
   cloneElement,
 } from 'react';
-export { Link, NavLink, Redirect, withRouter, StaticRouter, RouteComponentProps, RouteProps } from 'react-router-dom';
+export { Link, NavLink, Redirect, withRouter, StaticRouter } from 'react-router-dom';
+export type { RouteComponentProps, RouteProps } from 'react-router-dom';
 export { default as ReactDOMServer, renderToString, renderToStaticMarkup } from 'react-dom/server';
 
 export { default as IsomorphicContainer } from './IsomorphicContainer';

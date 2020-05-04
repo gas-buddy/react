@@ -20,8 +20,10 @@ export async function fetchApi(request) {
     .then(async (response) => {
       const { headers, status } = response;
       let responseBody;
-      const contentType = response.headers.get('content-type').toLowerCase();
-      if (contentType && contentType.includes('application/json')) {
+      const contentType = response.headers.get('content-type')?.toLowerCase();
+      if (!contentType) {
+        responseBody = await response.text();
+      } else if (contentType.includes('application/json')) {
         responseBody = await response.json();
       } else {
         responseBody = await response.blob();

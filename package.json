@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "8.2.0",
+  "version": "8.3.0",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
@@ -30,23 +30,23 @@
   },
   "homepage": "https://github.com/gas-buddy/web#readme",
   "dependencies": {
-    "@babel/plugin-transform-react-constant-elements": "^7.6.3",
-    "@babel/plugin-transform-react-inline-elements": "^7.2.0",
-    "@loadable/component": "^5.10.3",
+    "@babel/plugin-transform-react-constant-elements": "^7.10.4",
+    "@babel/plugin-transform-react-inline-elements": "^7.10.4",
+    "@loadable/component": "^5.13.1",
     "babel-plugin-transform-react-class-to-function": "^1.2.2",
     "isomorphic-fetch": "^2.2.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-hot-loader": "^4.12.15",
-    "react-router-dom": "^5.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.21",
+    "react-router-dom": "^5.2.0",
     "unstated": "^2.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/register": "^7.6.2",
-    "babel-preset-gasbuddy": "^5.6.1",
-    "cross-env": "^6.0.3",
+    "@babel/cli": "^7.10.5",
+    "@babel/register": "^7.10.5",
+    "babel-preset-gasbuddy": "^6.0.0",
+    "cross-env": "^7.0.2",
     "eslint-config-gasbuddy": "^5.3.0",
-    "tap": "^14.8.2"
+    "tap": "^14.10.7"
   }
 }

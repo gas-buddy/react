@@ -1,6 +1,14 @@
 name: Node CI
 
-on: [push]
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      npm_token:
+        required: true
 
 jobs:
   build:

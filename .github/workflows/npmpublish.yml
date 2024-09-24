@@ -1,6 +1,7 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -40,7 +41,7 @@ jobs:
       - run: npm run build
       - run: npm run build:webpack
       - name: npm publish
-        code: |
+        run: |
           npm config set unsafe-perm true
           npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
           npm publish . --tag latest

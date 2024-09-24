@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "8.3.0",
+  "version": "8.4.0",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",

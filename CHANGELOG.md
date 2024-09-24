@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+8.4.0
+-----
+
+* Extend `fetchApi` to allow consumer to pass `headers` in request
+
 7.0.0
 -----
 * Removed all traces of redux

@@ -1,0 +1,49 @@
+name: Node.js Package
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 12
+      - run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          npm ci
+        env:
+          NPM_TOKEN: ${{secrets.npm_token}}
+      - run: npm run build
+      - run: npm run build:webpack
+      - run: npm run lint
+      - run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          npm ci
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm run build
+      - run: npm run build:webpack
+      - name: npm publish
+        run: |
+          npm config set unsafe-perm true
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          npm publish . --tag latest
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}

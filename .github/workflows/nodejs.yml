@@ -1,0 +1,38 @@
+name: Node CI
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      npm_token:
+        required: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, lint, build, and test
+      run: |
+        npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+        npm ci
+        npm run lint
+        npm test
+        npm run build
+        npm run build:webpack
+      env:
+        NPM_TOKEN: ${{secrets.npm_token}}
+        CI: true

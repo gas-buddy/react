@@ -1,6 +1,6 @@
 {
   "name": "@gasbuddy/react",
-  "version": "8.3.0",
+  "version": "8.4.0",
   "description": "GasBuddy Platform for Web Projects",
   "main": "build/index.js",
   "module": "build-webpack/index.js",
@@ -11,6 +11,7 @@
     "ci-cover": "nyc check-coverage",
     "ci-coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
+    "prepare": "husky install",
     "prepublish": "npm run build && npm run build:webpack",
     "build": "babel --source-maps inline src/ --out-dir build/",
     "build:webpack": "cross-env BABEL_ENV=webpack babel src/ --out-dir build-webpack/"
@@ -47,6 +48,7 @@
     "babel-preset-gasbuddy": "^6.0.0",
     "cross-env": "^7.0.2",
     "eslint-config-gasbuddy": "^5.3.0",
+    "husky": "^7.0.4",
     "tap": "^14.10.7"
   }
 }
